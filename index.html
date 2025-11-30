@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#fce7f3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Advanced Japanese listening practice app for JLPT N1/N2." />
+    
+    <title>Chōkai Master - Advanced Japanese Listening</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sakura: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                200: '#fecdd3',
+                300: '#fda4af',
+                400: '#fb7185',
+                500: '#f43f5e',
+                600: '#e11d48',
+                700: '#be123c',
+                800: '#9f1239',
+                900: '#881337',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'float': 'float 3s ease-in-out infinite',
+              'bounce-gentle': 'bounceGentle 2s infinite',
+              'petal-fall': 'petalFall 10s linear infinite',
+              'rain-drop': 'rainDrop 1s linear infinite',
+              'flash': 'flash 5s infinite',
+              'twinkle': 'twinkle 3s ease-in-out infinite',
+              'cloud-move': 'cloudMove 20s linear infinite',
+              'wave': 'wave 10s linear infinite',
+              'leaf-fall': 'leafFall 8s linear infinite',
+              'heart-fall': 'heartFall 6s linear infinite',
+              'slash': 'slash 2s ease-in-out infinite',
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'rotate-3d': 'rotate3d 10s linear infinite',
+              'rise': 'rise 4s ease-in infinite',
+              'snow-fall': 'snowFall 8s linear infinite',
+              'firework': 'firework 2s ease-out infinite',
+              'spin-slow': 'spin 20s linear infinite',
+              'pirate-sway': 'pirateSway 4s ease-in-out infinite',
+              'text-shine': 'textShine 3s linear infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              bounceGentle: {
+                '0%, 100%': { transform: 'translateY(-3%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+              },
+              petalFall: {
+                '0%': { transform: 'translateY(-10vh) translateX(0) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'translateY(100vh) translateX(20vw) rotate(360deg)', opacity: '0' }
+              },
+              rainDrop: {
+                '0%': { transform: 'translateY(-100vh)', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { transform: 'translateY(100vh)', opacity: '0.5' }
+              },
+              flash: {
+                '0%, 90%, 100%': { opacity: '0' },
+                '92%, 96%': { opacity: '0.8' },
+                '94%': { opacity: '0.2' }
+              },
+              twinkle: {
+                '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                '50%': { opacity: '1', transform: 'scale(1.2)' }
+              },
+              cloudMove: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' }
+              },
+              wave: {
+                '0%': { transform: 'translateX(0) translateZ(0) scaleY(1)' },
+                '50%': { transform: 'translateX(-25%) translateZ(0) scaleY(0.8)' },
+                '100%': { transform: 'translateX(-50%) translateZ(0) scaleY(1)' }
+              },
+              leafFall: {
+                '0%': { transform: 'translateY(-10vh) translateX(0) rotate(0deg)', opacity: '0' },
+                '10%': { opacity: '1' },
+                '100%': { transform: 'translateY(100vh) translateX(40px) rotate(180deg)', opacity: '0' }
+              },
+              heartFall: {
+                '0%': { transform: 'translateY(-10vh) rotate(0deg)', opacity: '0.8' },
+                '100%': { transform: 'translateY(100vh) rotate(360deg)', opacity: '0' }
+              },
+              slash: {
+                '0%': { transform: 'translateX(-50px) rotate(-45deg)', opacity: '0' },
+                '20%': { opacity: '1' },
+                '40%': { transform: 'translateX(50px) rotate(-45deg)', opacity: '0' },
+                '100%': { opacity: '0' }
+              },
+              rotate3d: {
+                '0%': { transform: 'rotateX(0deg) rotateY(0deg)' },
+                '100%': { transform: 'rotateX(360deg) rotateY(360deg)' }
+              },
+              rise: {
+                '0%': { transform: 'translateY(100%) scale(0.5)', opacity: '0' },
+                '50%': { opacity: '0.8' },
+                '100%': { transform: 'translateY(-20%) scale(1.5)', opacity: '0' }
+              },
+              snowFall: {
+                '0%': { transform: 'translateY(-10vh) translateX(0)', opacity: '0' },
+                '10%': { opacity: '1' },
+                '100%': { transform: 'translateY(100vh) translateX(20px)', opacity: '0.3' }
+              },
+              firework: {
+                '0%': { transform: 'scale(0)', opacity: '1' },
+                '100%': { transform: 'scale(1.5)', opacity: '0' }
+              },
+              pirateSway: {
+                 '0%, 100%': { transform: 'rotate(-5deg)' },
+                 '50%': { transform: 'rotate(5deg)' }
+              },
+              textShine: {
+                '0%': { backgroundPosition: '0% 50%' },
+                '100%': { backgroundPosition: '200% 50%' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+Myanmar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/346/346195.png" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/346/346195.png">
+    
+    <style>
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        /* transition: background-color 0.5s ease; */
+        overflow-x: hidden;
+      }
+      .font-myanmar {
+        font-family: 'Noto Sans Myanmar', sans-serif;
+      }
+      ruby {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        line-height: 1;
+      }
+      rt {
+        font-size: 0.5em;
+        line-height: 1;
+        margin-bottom: 2px;
+        opacity: 0.8;
+      }
+      /* Custom scrollbar for script area */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.1);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+      }
+      
+      /* Glassmorphism Utilities */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      
+      /* Theme Backgrounds Patterns */
+      .demon-slayer-pattern {
+        background-image: 
+          linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+          linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        opacity: 0.1;
+      }
+      .star-pattern {
+        background-image: 
+          radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+          radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+          radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+        background-size: 550px 550px, 350px 350px, 250px 250px;
+        background-position: 0 0, 40px 60px, 130px 270px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-sakura-200 selection:text-sakura-900">
+    <div id="root"></div>
+  </body>
+</html>
